@@ -20,14 +20,8 @@ if pkg_installed sddm; then
     fi
 
     if [ ! -f /etc/sddm.conf.d/kde_settings.t2.bkp ]; then
-        echo -e "\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm..."
-        echo -e "Select sddm theme:\n[1] Candy\n[2] Corners"
-        read -p " :: Enter option number : " sddmopt
-
-        case $sddmopt in
-        1) sddmtheme="Candy" ;;
-        *) sddmtheme="Corners" ;;
-        esac
+        echo -e "\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm with `Candy` theme..."
+        sddmtheme="Candy" ;;
 
         sudo tar -xzf ${cloneDir}/Source/arcs/Sddm_${sddmtheme}.tar.gz -C /usr/share/sddm/themes/
         sudo touch /etc/sddm.conf.d/kde_settings.conf
@@ -59,22 +53,3 @@ fi
 
 # shell
 "${scrDir}/restore_shl.sh"
-
-# flatpak
-if ! pkg_installed flatpak; then
-
-    echo -e "\033[0;32m[FLATPAK]\033[0m flatpak application list..."
-    awk -F '#' '$1 != "" {print "["++count"]", $1}' "${scrDir}/.extra/custom_flat.lst"
-    prompt_timer 60 "Install these flatpaks? [Y/n]"
-    fpkopt=${promptIn,,}
-
-    if [ "${fpkopt}" = "y" ]; then
-        echo -e "\033[0;32m[FLATPAK]\033[0m installing flatpaks..."
-        "${scrDir}/.extra/install_fpk.sh"
-    else
-        echo -e "\033[0;33m[SKIP]\033[0m installing flatpaks..."
-    fi
-
-else
-    echo -e "\033[0;33m[SKIP]\033[0m flatpak is already installed..."
-fi

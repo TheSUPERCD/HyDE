@@ -112,30 +112,8 @@ EOF
     #----------------#
     # get user prefs #
     #----------------#
-    if ! chk_list "aurhlpr" "${aurList[@]}"; then
-        echo -e "Available aur helpers:\n[1] yay\n[2] yay (bin)\n[3] paru\n[4] paru (bin)"
-        prompt_timer 120 "Enter option number [default: yay] "
-
-        case "${promptIn}" in
-            1) export getAur="yay" ;;
-            2) export getAur="yay-bin" ;;
-            3) export getAur="paru" ;;
-            4) export getAur="paru-bin" ;;
-            *) echo -e "...Invalid option selected..." ; exit 1 ;;
-        esac
-    fi
-
-    if ! chk_list "myShell" "${shlList[@]}"; then
-        echo -e "Select shell:\n[1] zsh\n[2] fish"
-        prompt_timer 120 "Enter option number"
-
-        case "${promptIn}" in
-            1) export myShell="zsh" ;;
-            2) export myShell="fish" ;;
-            *) echo -e "...Invalid option selected..." ; exit 1 ;;
-        esac
-        echo "${myShell}" >> "${scrDir}/install_pkg.lst"
-    fi
+    export getAur="yay" ;;
+    export myShell="zsh" ;;
 
     #--------------------------------#
     # install packages from the list #

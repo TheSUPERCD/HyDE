@@ -28,12 +28,8 @@ function command_not_found_handler {
     return 127
 }
 
-# Detect AUR wrapper
-if pacman -Qi yay &>/dev/null; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null; then
-   aurhelper="paru"
-fi
+# Detect AUR wrapper (not needed, since I always use `yay` or `makepkg -isrc`)
+aurhelper="yay"
 
 function in {
     local -a inPkg=("$@")
@@ -70,7 +66,12 @@ alias pl='$aurhelper -Qs' # list installed package
 alias pa='$aurhelper -Ss' # list available package
 alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-alias vc='code' # gui code editor
+
+# Useful utilities
+alias vi='nvim'
+alias vim='nvim'
+alias icat='kitten icat'
+
 
 # Directory navigation shortcuts
 alias ..='cd ..'
@@ -85,5 +86,3 @@ alias mkdir='mkdir -p'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Display Pokemon
-pokemon-colorscripts --no-title -r 1,3,6
