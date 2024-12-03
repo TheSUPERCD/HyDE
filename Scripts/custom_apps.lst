@@ -19,5 +19,27 @@
 # spotify                                                # proprietary music streaming service
 # spicetify-cli                                          # cli to customize spotify client
 
-# --------------------------------------------------- // Apps
-neovim                                               # vim based text editor
+# --------------------------------------------------- // Custom List Of Apps
+neovim
+ripgrep
+npm
+
+dnsmasq
+hostapd
+
+android-studio
+cmake
+ninja
+clang
+
+deno
+rustup
+unzip
+
+#vtk
+#glew
+#hdf5
+#cuda
+#cudnn
+#opencv-cuda
+

@@ -77,3 +77,13 @@ fastfetch                                              # system information fetc
 
 # --------------------------------------------------- // HyDE
 # hyde-cli-git                                           # cli tool to manage hyde
+
+# --------------------------------------------------- // Custom List of important applications 
+terminus-font
+aic94xx-firmware
+ast-firmware
+linux-firmware-qlogic
+upd72020x-fw
+wd719x-firmware
+
+plymouth
