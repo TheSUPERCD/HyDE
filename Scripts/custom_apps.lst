@@ -27,10 +27,10 @@ npm
 dnsmasq
 hostapd
 
-android-studio
-cmake
-ninja
-clang
+#android-studio
+#cmake
+#ninja
+#clang
 
 deno
 rustup
