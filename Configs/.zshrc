@@ -70,7 +70,11 @@ alias pl='$aurhelper -Qs' # list installed package
 alias pa='$aurhelper -Ss' # list available package
 alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-alias vc='code' # gui code editor
+
+alias vi='nvim' 
+alias vim='nvim'
+alias icat='kitten icat'
+alias pybase='source ~/miniconda3/bin/activate'
 
 # Directory navigation shortcuts
 alias ..='cd ..'
@@ -85,5 +89,3 @@ alias mkdir='mkdir -p'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Display Pokemon
-pokemon-colorscripts --no-title -r 1,3,6
