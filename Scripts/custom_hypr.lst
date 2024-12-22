@@ -39,6 +39,7 @@ cliphist                                               # clipboard manager
 # --------------------------------------------------- // Dependencies
 polkit-gnome                                           # authentication agent
 xdg-desktop-portal-hyprland                            # xdg desktop portal for hyprland
+hyprland-qtutils
 # pacman-contrib                                         # for system update check
 # python-pyamdgpuinfo                                    # for amd gpu info
 parallel                                               # for parallel processing
@@ -73,7 +74,5 @@ zsh-theme-powerlevel10k-git|zsh oh-my-zsh-git          # theme for zsh
 eza|fish                                               # file lister for fish
 starship|fish                                          # customizable shell prompt
 fastfetch                                              # system information fetch tool
-# pokemon-colorscripts-git|zsh                           # display pokemon sprites
 
 # --------------------------------------------------- // HyDE
-# hyde-cli-git                                           # cli tool to manage hyde
