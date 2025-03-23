@@ -20,7 +20,7 @@ fastfetch --config hyde/*.jsonc
       "type": "command",
       "key": "  ",
       "keyColor": "blue",
-      "text": "splash=$(hyprctl splash);echo $splash"
+      "text": "System Overview"
     },
     {
       "type": "custom",

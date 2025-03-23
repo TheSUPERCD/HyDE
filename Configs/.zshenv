@@ -202,14 +202,24 @@ if [ -t 1 ]; then
         up='$PM upgrade' \
         pl='$PM search installed' \
         pa='$PM search installed' \
-        vc='code' \
         fastfetch='fastfetch --logo-type kitty' \
+        vi='nvim' \
+      	vim='nvim' \
+        icat='kitten icat' \
         ..='cd ..' \
         ...='cd ../..' \
         .3='cd ../../..' \
         .4='cd ../../../..' \
         .5='cd ../../../../..' \
         mkdir='mkdir -p' # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+    
+    # flutter development sdk directory
+    export PATH="$HOME/.android-development/flutter/bin:$PATH"
+    export JAVA_HOME="/opt/android-studio/jbr"
+    export ANDROID_HOME="$HOME/Android/Sdk"
+    export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
+    # initialization of fzf
+    eval "$(fzf --zsh)"
 
     # TODO add handlers in pm.sh
     # for this aliases please manually add the following lines to your .zshrc file. yay as the aur helper
