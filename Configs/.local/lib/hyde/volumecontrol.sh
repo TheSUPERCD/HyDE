@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Personalized global variable for hardware issues
+MIC_MUTE_FILEPATH="/home/thesupercd/.mute_lock"
+
 # Source global control script
 scrDir=$(dirname "$(realpath "$0")")
 # shellcheck disable=SC1091
@@ -59,6 +62,7 @@ notify_vol() {
 }
 
 notify_mute() {
+    [ "${srce}" == "@DEFAULT_AUDIO_SOURCE@" ] && srce="--default-source" || srce=""
     mute=$(pamixer "${srce}" --get-mute | cat)
     [ "${srce}" == "--default-source" ] && dvce="microphone" || dvce="speaker"
     if [ "${mute}" == "true" ]; then
@@ -122,11 +126,24 @@ toggle_mute() {
         if [[ "${use_pipewire}" == true ]]; then
             [ "${srce}" = "--default-source" ] && srce="@DEFAULT_AUDIO_SOURCE@"
             [ "${srce}" = "" ]                 && srce="@DEFAULT_AUDIO_SINK@"
-            wpctl set-mute "${srce}" toggle
+            if [[ "$srce" == "@DEFAULT_AUDIO_SOURCE@" ]]; then
+              if [[ -f "$MIC_MUTE_FILEPATH" ]]; then
+                echo $(( (1+$(cat $MIC_MUTE_FILEPATH))%2 )) > $MIC_MUTE_FILEPATH
+              else
+                echo "0" > $MIC_MUTE_FILEPATH
+              fi
+              if [[ $(cat $MIC_MUTE_FILEPATH) -eq 0 ]]; then
+                wpctl set-mute "${srce}" toggle
+                notify_mute
+              fi
+            else
+              wpctl set-mute "${srce}" toggle
+              notify_mute
+            fi
         else
             pamixer "$srce" -t
+            notify_mute
         fi
-        notify_mute
         ;;
     "playerctl")
         local volume_file

@@ -1,0 +1,1 @@
+{AMD/AMD Radeon 680M (radeonsi, rembrandt, LLVM 20.1.8, DRM 3.64, 6.17.2-arch1-1)/4.6 (Core Profile) Mesa 25.2.4-arch1.2}=SUPPORTED
